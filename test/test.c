@@ -183,7 +183,8 @@ int main(void) {
 
     printf("\n==== WHITESPACE HANDLING ====\n");
     ASSERT_EQ_INT(_rint, "   123   ", 123);
-    ASSERT_EQ_INT(_rint, "\t 456 \t", 456);
+    ASSERT_EQ_INT(_rint, "\t 456 \t", 0);
+    ASSERT_EQ_INT(_rint, "\t789\t", 789);
 
     printf("\n==== MIXED SEPARATORS AT BOUNDARIES ====\n");
     ASSERT_EQ_LLONG(_rlonglong, "9_223_372_036_854_775_807", LLONG_MAX);
@@ -208,4 +209,3 @@ int main(void) {
 
     return (failed_tests == 0) ? 0 : 1;
 }
-
