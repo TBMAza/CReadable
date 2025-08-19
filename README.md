@@ -121,7 +121,7 @@ CReadable is experimental, and some edge cases are **not yet supported**:
 
 ## ✅ Test Results
 
-Out of **41 tests**, **39 passed** and **2 failed** (due to the issues mentioned above).
+Out of **41 tests**, **39 passed** and **2 failed** (due to scientific notation not being supported yet).
 
 ```
 ==== SUMMARY ====
@@ -133,7 +133,6 @@ Total: 41 | Passed: 39 | Failed: 2
 ## 🔮 Roadmap
 
 * [ ] Add support for scientific notation (`e`, `E`)
-* [ ] Fix handling of trailing spaces
 * [ ] Optimize parsing to avoid unnecessary allocations
 * [ ] Add CI tests and package release on GitHub
 
