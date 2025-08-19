@@ -101,15 +101,7 @@ CReadable is experimental, and some edge cases are **not yet supported**:
 
    Currently, `e` or `E` is treated as an invalid character.
 
-2. **Trailing spaces are not handled correctly**
-
-   ```c
-   int n = rint("   456    "); // ❌ Fails with "Invalid symbol found"
-   ```
-
-   Leading spaces are supported, but trailing spaces cause an error.
-
-3. **Float/Int strictness is intentional**
+2. **Float/Int strictness is intentional**
    For readability, CReadable enforces explicit decimal points for floating-point literals:
 
    ```c
@@ -120,7 +112,7 @@ CReadable is experimental, and some edge cases are **not yet supported**:
 
    This is by design to encourage clearer numeric literals.
 
-4. **Performance**
+3. **Performance**
 
    * Each call involves parsing and allocating memory internally (freed automatically).
    * Not intended for tight loops or performance-critical code.
@@ -129,11 +121,11 @@ CReadable is experimental, and some edge cases are **not yet supported**:
 
 ## ✅ Test Results
 
-Out of **40 tests**, **37 passed** and **3 failed** (due to the issues mentioned above).
+Out of **41 tests**, **39 passed** and **2 failed** (due to the issues mentioned above).
 
 ```
 ==== SUMMARY ====
-Total: 40 | Passed: 37 | Failed: 3
+Total: 41 | Passed: 39 | Failed: 2
 ```
 
 ---
