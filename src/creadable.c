@@ -6,19 +6,27 @@
 
 #include "creadable.h"
 
-static void extract_number(char* readable_number, char** number, size_t* len, char* negative, char* floating) {
+static void extract_number(char* rn, char** number, size_t* len, char* negative, char* floating) {
 	*number = NULL;
 	*negative = 0;
 	*floating = 0;
 	if(len) *len = 0;
-	size_t rnlen = strlen(readable_number);
+	size_t rnlen = strlen(rn);
 
 	if(!rnlen) {
 		fprintf(stderr, "[CREADABLE ERROR] No number provided. Defaulting to zero.\n");
 		return;
 	}
 
-	//checks
+	// remove trailing spaces
+	char readable_number[rnlen];
+	strcpy(readable_number, rn);
+	for(size_t i = rnlen-2; readable_number[i] == ' ' || readable_number[i] == '\t'; --i) {
+		readable_number[i] = '\0';
+	}
+	rnlen = strlen(readable_number);
+
+	// checks
 	char leading_spaces = 1;
 	char separator = '\0';
 
@@ -54,13 +62,14 @@ static void extract_number(char* readable_number, char** number, size_t* len, ch
 			ret[j++] = readable_number[i];
 		break;
 		case ' ':
+		case '\t':
 			if(!leading_spaces && separator == '\0') {
-			    separator = ' ';
+			    separator = readable_number[i];
 			}
 		// intentional fall-through
 		case '_':
 		case ',':
-			if(readable_number[i] != ' ') leading_spaces = 0;
+			if(readable_number[i] != ' ' && readable_number[i] != '\t') leading_spaces = 0;
 			if(separator == '\0') {
 			    separator = readable_number[i];
 			}
@@ -68,8 +77,9 @@ static void extract_number(char* readable_number, char** number, size_t* len, ch
 				fprintf(
 					stderr,
 					"[CREADABLE ERROR] Incosistent usage of separators: "
-					"found '%c' while '%c' already in use. Defaulting to zero.\n",
-					readable_number[i], separator
+					"found '%s' while '%s' already in use. Defaulting to zero.\n",
+					readable_number[i] == ' ' ? "<space>" : (readable_number[i] == '\t' ? "<tab>" : (char[]){readable_number[i], '\0'}),
+					separator == ' ' ? "<space>" : (separator == '\t' ? "<tab>" : (char[]){separator, '\0'})
 				);
 				free(ret);
 				return;
@@ -493,4 +503,3 @@ long double _rlongdouble(char* readable_number) {
 	free(number);
 	return ret;
 }
-
