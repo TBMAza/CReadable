@@ -18,9 +18,9 @@ CReadable automatically parses strings with separators (`_`, `,`, or spaces) int
 
 ---
 
-## ✨ Features
+## Features
 
-* ✅ Readable numeric literals for all standard C types:
+* Readable numeric literals for all standard C types:
 
   * `char`, `signed char`, `unsigned char`
   * `short`, `unsigned short`
@@ -28,20 +28,20 @@ CReadable automatically parses strings with separators (`_`, `,`, or spaces) int
   * `long`, `unsigned long`
   * `long long`, `unsigned long long`
   * `float`, `double`, `long double`
-* ✅ Allows separators in numbers:
+* Allows separators in numbers:
 
   * Underscore (`_`): `1_234_567`
   * Comma (`,`) : `1,234,567`
   * Space (` `) : `12 345`
-* ✅ Handles negative numbers
-* ✅ Detects and reports overflow/underflow
-* ✅ Reports type mismatches (e.g., assigning float to int, or int to float)
-* ✅ Gracefully defaults to zero on error
-* ✅ Boundary values supported (e.g., `INT_MAX`, `LLONG_MIN`, `ULLONG_MAX`)
+* Handles negative numbers
+* Detects and reports overflow/underflow
+* Reports type mismatches (e.g., assigning float to int, or int to float)
+* Gracefully defaults to zero on error
+* Boundary values supported (e.g., `INT_MAX`, `LLONG_MIN`, `ULLONG_MAX`)
 
 ---
 
-## 📦 Installation
+## Installation
 
 Simply add **`creadable.h`** and **`creadable.c`** to your project and include the header:
 
@@ -57,7 +57,7 @@ gcc main.c creadable.c -o main
 
 ---
 
-## 🚀 Usage
+## Usage
 
 ```c
 #include <stdio.h>
@@ -89,7 +89,7 @@ int main(void) {
 
 ---
 
-## ⚠️ Known Limitations
+## Known Limitations
 
 CReadable is experimental, and some edge cases are **not yet supported**:
 
@@ -119,7 +119,7 @@ CReadable is experimental, and some edge cases are **not yet supported**:
 
 ---
 
-## ✅ Test Results
+## Test Results
 
 Out of **41 tests**, **39 passed** and **2 failed** (due to scientific notation not being supported yet).
 
@@ -130,7 +130,7 @@ Total: 41 | Passed: 39 | Failed: 2
 
 ---
 
-## 🔮 Roadmap
+## Roadmap
 
 * [ ] Add support for scientific notation (`e`, `E`)
 * [ ] Optimize parsing to avoid unnecessary allocations
@@ -138,6 +138,6 @@ Total: 41 | Passed: 39 | Failed: 2
 
 ---
 
-## 📜 License
+## License
 
 MIT License – feel free to use, modify, and distribute.
